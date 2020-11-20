@@ -10,7 +10,7 @@ import (
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"google.golang.org/grpc"
 
-	gw "github.com/bmstu-iu8-cpp-sem-3/lab-07-grpc/pkg/echo"
+	gw "github.com//home/alexey/alg_langs/sem3_RK2/pkg/echo"
 )
 
 var (

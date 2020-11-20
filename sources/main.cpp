@@ -12,15 +12,14 @@ using grpc::Server;
 using grpc::ServerBuilder;
 using grpc::ServerContext;
 using grpc::Status;
-using echo::HelloRequest;
-using echo::HelloResponse;
+using echo::SumRequest;
+using echo::SumResponse;
 using echo::Echo;
 
 class EchoServiceImpl final : public Echo::Service {
-  Status Hello(ServerContext* context, const HelloRequest* request,
-                  HelloResponse* response) override {
-    std::string prefix("Hello ");
-    response->set_data(prefix + request->data());
+  Status Sum(ServerContext* context, const SumRequest* request,
+                  SumResponse* response) override {
+    response->set_data(request->a() + request->b());
     return Status::OK;
   }
 };

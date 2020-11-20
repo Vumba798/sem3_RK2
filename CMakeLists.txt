@@ -13,6 +13,8 @@ set(
 
 include("tools/gate/cmake/HunterGate.cmake")
 
+set(HUNTER_CONFIGURATION_TYPES Release)
+set(HUNTER_BUILD_SHARED_LIBS ON)
 HunterGate(
   URL "https://github.com/cpp-pm/hunter/archive/v0.23.218.tar.gz"
   SHA1 "9a3594a61227967fb92159339ba326701b287b19"

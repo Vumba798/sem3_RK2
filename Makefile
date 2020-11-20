@@ -70,14 +70,14 @@ init-submodule: intall-git .init-submodule
 install-deps: install-golang install-protobuf install-go-deps install-cpp-deps
 
 .PHONY: install-golang
-install-golang: install-brew .install-golang
+install-golang:  .install-golang
 
 .PHONY: .install-golang
 .install-golang:
 	which go || brew install golang
 
 .PHONY: install-protobuf
-install-protobuf: install-brew .install-protobuf
+install-protobuf: .install-protobuf
 
 .PHONY: .install-protobuf
 .install-protobuf:
@@ -96,19 +96,16 @@ install-go-deps: install-golang .install-go-deps
 .PHONY: install-cpp-deps
 install-cpp-deps: install-git install-cmake .install-cpp-deps
 
-.PHONY: install-brew
-install-brew:
-	which brew || /bin/bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 .PHONY: install-git
-install-git: install-brew .install-git
+install-git:  .install-git
 
 .PHONY: .install-git
 .install-git:
 	which git || brew install git
 
 .PHONY: install-cmake
-install-cmake: install-brew .install-cmake
+install-cmake:  .install-cmake
 
 .PHONY: .install-cmake
 .install-cmake:
@@ -133,13 +130,13 @@ ifndef GRPC_CPP_PLUGIN_EXISTS
 endif
 
 .PHONY: config
-config: install-gsed .config
+config: install-sed .config
 
-.PHONY: install-gsed
-install-gsed:
-	which gsed || brew install gsed
+.PHONY: install-sed
+install-sed:
+	which sed || brew install sed
 
 GO_PACKAGE_PATH:=$(shell pwd | sed -e "s,.*go\/src/github.com/\(.*\),\1,")
 .PHONY: .config
 .config:
-	gsed -i 's,bmstu-iu8-cpp-sem-3/lab-07-grpc,$(GO_PACKAGE_PATH),' gateway.go
+	sed -i 's,bmstu-iu8-cpp-sem-3/lab-07-grpc,$(GO_PACKAGE_PATH),' gateway.go

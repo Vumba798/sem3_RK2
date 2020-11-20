@@ -33,6 +33,7 @@
 
 _logs
 _builds
+*build*
 
 .idea
 pkg
